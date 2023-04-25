@@ -1,0 +1,8 @@
+nach0.recipes.disable("bob-resin-wood")
+nach0.recipes.disable("5d-gold-circuit")
+nach0.recipes.disable("rare-metals")
+nach0.recipes.disable("graphite-5d")
+nach0.recipes.disable("5d-lead-plate-industrial")
+nach0.recipes.disable("tungsten-carbide-industrial-dust")
+nach0.recipes.disable("5d-lead-plate-industrial-dust")
+nach0.recipes.disable("lead-dust")
