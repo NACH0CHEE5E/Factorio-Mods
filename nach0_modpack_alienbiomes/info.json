@@ -1,0 +1,12 @@
+{
+  "name": "nach0_modpack_alienbiomes",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!Alien Biomes Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing Alien Biomes and the high res mods to make turning them on easier.",
+  "dependencies": [
+    "alien-biomes",
+    "alien-biomes-hr-terrain"
+  ]
+}

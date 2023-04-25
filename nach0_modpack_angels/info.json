@@ -1,0 +1,22 @@
+{
+  "name": "nach0_modpack_angels",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!Angels Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing all Angels mods to make turning them on easier.",
+  "dependencies": [
+    "angelsaddons-cab",
+    "angelsaddons-mobility",
+    "? angelsaddons-nilaus",
+    "? angelsaddons-shred",
+    "angelsaddons-storage",
+    "angelsbioprocessing",
+    "angelsexploration",
+    "angelsindustries",
+    "angelsinfiniteores",
+    "angelspetrochem",
+    "angelsrefining",
+    "angelssmelting"
+  ]
+}

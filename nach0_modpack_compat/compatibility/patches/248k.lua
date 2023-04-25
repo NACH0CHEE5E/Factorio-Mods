@@ -1,0 +1,1 @@
+data.raw["heat-pipe"]["se-naquium-heat-pipe"].collision_box = data.raw["heat-pipe"]["heat-pipe"].collision_box

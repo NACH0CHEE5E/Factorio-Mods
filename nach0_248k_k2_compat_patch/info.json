@@ -1,0 +1,13 @@
+{
+    "name": "nach0_248k_k2_compat_patch",
+    "version": "0.0.1",
+    "factorio_version": "1.1",
+    "title": "248k and Krastorio 2 compatibility patch",
+    "author": "NACH0",
+    "description": "This mod fixes an error when trying to use 248k in overhaul mode with krastorio 2.",
+    "dependencies": [
+        "248k",
+        "Krastorio2",
+        "nach0_library"
+    ]
+}

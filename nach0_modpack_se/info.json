@@ -1,0 +1,14 @@
+{
+  "name": "nach0_modpack_se",
+  "version": "0.0.2",
+  "factorio_version": "1.1",
+  "title": "!Space Exploration Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing all the space exploration mods and all dependencies (optinal too) to make turning them on easier.",
+  "dependencies": [
+    "space-exploration-official-modpack",
+    "nach0_modpack_aai",
+    "InserterFuelLeech",
+    "nach0_modpack_alienbiomes"
+  ]
+}

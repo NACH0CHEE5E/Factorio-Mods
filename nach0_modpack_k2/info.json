@@ -1,0 +1,18 @@
+{
+  "name": "nach0_modpack_k2",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!K2 Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing Krastorio 2, compatibility mod and the recomended mods to make turning them on easier.",
+  "dependencies": [
+    "Krastorio2",
+    "Krastorio2Assets",
+    "krastorio-2-compat",
+    "FluidMustFlow",
+    "nach0_modpack_alienbiomes",
+    "RecipeBook",
+    "VehicleSnap",
+    "ArmouredBiters"
+  ]
+}

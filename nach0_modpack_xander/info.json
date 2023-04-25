@@ -1,0 +1,11 @@
+{
+  "name": "nach0_modpack_xander",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!Xander Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing all Bobs mods to make turning them on easier.",
+  "dependencies": [
+    "xander-mod"
+  ]
+}

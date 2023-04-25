@@ -1,0 +1,11 @@
+{
+  "name": "nach0-attach-notes",
+  "version": "0.5.2",
+  "factorio_version": "1.1",
+  "title": "Attach Notes - patch for SE and more",
+  "author": "321freddy, Tireon/pmendl, NACH0",
+  "contact": "",
+  "homepage": "",
+  "description": "Patch for Attach Notes, made for my modpack (https://mods.factorio.com/mod/nach0_modpack) but will also fix an issue when running this mod and space exploration and a few other mods, credit must go to the original mod creator 321freddy if you want me to take this down I will!, credit also to Tireon/pmendl as they made a patch i just made it a mod for easy download. Attach notes to combinators, entities... almost everything \r\n + Adds signposts. \r\n\r\nAll notes are saved when you export a blueprint as a string (but you need the mod to read them).",
+  "dependencies": ["base >= 1.1.0", "?Flare Stack", "?aai-programmable-vehicles", "?MathCoProcessor", "(?)EditorExtensions", "(?)IndustrialDisplayPlates", "?magic-lamp"]
+}

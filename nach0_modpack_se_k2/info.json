@@ -1,0 +1,12 @@
+{
+  "name": "nach0_modpack_se_k2",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!SE and K2 Modpack",
+  "author": "NACH0",
+  "description": "Just a modpack containing Krastorio 2, Space Exploration and related mods to make turning them on easier.",
+  "dependencies": [
+    "nach0_modpack_k2",
+    "nach0_modpack_se"
+  ]
+}

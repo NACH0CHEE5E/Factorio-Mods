@@ -1,0 +1,13 @@
+{
+  "name": "nach0_modpack_248k_k2",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!K2 and 248k Modpack",
+  "author": "NACH0",
+  "description": "Just a modpack containing Krastorio 2 and 248k, with a compatibility patch, to make turning them on easier.",
+  "dependencies": [
+    "nach0_modpack_k2",
+    "248k",
+    "nach0_248k_k2_compat_patch"
+  ]
+}

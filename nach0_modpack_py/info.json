@@ -1,0 +1,28 @@
+{
+  "name": "nach0_modpack_py",
+  "version": "0.0.2",
+  "factorio_version": "1.1",
+  "title": "!Pyranadons Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing all the Pyranadons mods to make turning them on easier.",
+  "dependencies": [
+    "pyalienlife",
+    "pyalienlifegraphics",
+    "pyalienlifegraphics2",
+    "pyalienlifegraphics3",
+    "pyalternativeenergy",
+    "pyalternativeenergygraphics",
+    "pycoalprocessing",
+    "pycoalprocessinggraphics",
+    "pyfusionenergy",
+    "pyfusionenergygraphics",
+    "pyhightech",
+    "pyhightechgraphics",
+    "pyindustry",
+    "pypetroleumhandling",
+    "pypetroleumhandlinggraphics",
+    "pypostprocessing",
+    "pyrawores",
+    "pyraworesgraphics"
+  ]
+}

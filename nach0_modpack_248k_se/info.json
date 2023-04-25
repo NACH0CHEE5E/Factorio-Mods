@@ -1,0 +1,13 @@
+{
+  "name": "nach0_modpack_248k_se",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!SE and 248k Modpack",
+  "author": "NACH0",
+  "description": "Just a modpack containing Space Exploration and 248k, with a compatibility patch, to make turning them on easier.",
+  "dependencies": [
+    "nach0_modpack_se",
+    "248k",
+    "tempfix-se0_6-248k-oct2022"
+  ]
+}

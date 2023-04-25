@@ -1,0 +1,17 @@
+{
+  "name": "nach0_modpack_yuoki",
+  "version": "0.0.2",
+  "factorio_version": "1.1",
+  "title": "!Yuoki Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing all the Yuoki mods to make turning them on easier.",
+  "dependencies": [
+    "yi_engines",
+    "yi_railway",
+    "Yuoki",
+    "z_yira_american",
+    "z_yira",
+    "z_yira_yuokirails",
+    "? zJatmnYiFixes"
+  ]
+}

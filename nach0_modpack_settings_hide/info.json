@@ -1,0 +1,11 @@
+{
+  "name": "nach0_modpack_settings_hide",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!NACH0's Very Modded Modpack: Unhide Settings",
+  "author": "NACH0",
+  "homepage": "https://forums.factorio.com/viewtopic.php?f=190&t=106006",
+  "description": "For use with my modpack settings mod, will make it so that the settings are no longer hidden and forced, recomended to enable after a first launch",
+  "dependencies": [
+  ]
+}

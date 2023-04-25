@@ -1,0 +1,20 @@
+{
+    "Lua.diagnostics.globals": [
+        "game",
+        "global",
+        "serpent",
+        "log",
+        "script",
+        "defines",
+        "data",
+        "settings",
+        "textbox_dirt",
+        "util",
+        "loadstring",
+        "unpack",
+        "rendering"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ]
+}

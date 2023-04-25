@@ -1,0 +1,26 @@
+{
+  "name": "nach0_modpack_aai",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!AAI Mods",
+  "author": "NACH0",
+  "description": "Just a modpack containing all the AAI mods to make turning them on easier.",
+  "dependencies": [
+    "aai-containers",
+    "aai-industry",
+    "aai-loaders",
+    "aai-programmable-structures",
+    "aai-programmable-vehicles",
+    "aai-signals",
+    "aai-signal-transmission",
+    "aai-vehicles-chaingunner",
+    "aai-vehicles-flame-tank",
+    "aai-vehicles-flame-tumbler",
+    "aai-vehicles-hauler",
+    "aai-vehicles-ironclad",
+    "aai-vehicles-laser-tank",
+    "aai-vehicles-miner",
+    "aai-vehicles-warden",
+    "aai-zones"
+  ]
+}

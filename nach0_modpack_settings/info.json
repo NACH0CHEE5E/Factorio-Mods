@@ -1,0 +1,13 @@
+{
+  "name": "nach0_modpack_settings",
+  "version": "0.0.3",
+  "factorio_version": "1.1",
+  "title": "!NACH0's Very Modded Modpack: Settings",
+  "author": "NACH0",
+  "homepage": "https://forums.factorio.com/viewtopic.php?f=190&t=106006",
+  "description": "Automatically sets all the settings for the mods contained within the main modpack.",
+  "dependencies": [
+    "nach0_library",
+    "(?) nach0_modpack_settings_hide"
+  ]
+}

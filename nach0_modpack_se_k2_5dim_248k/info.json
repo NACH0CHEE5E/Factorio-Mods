@@ -1,0 +1,13 @@
+{
+  "name": "nach0_modpack_se_k2_5dim_248k",
+  "version": "0.0.1",
+  "factorio_version": "1.1",
+  "title": "!SE, K2, 5dim and 248k Modpack",
+  "author": "NACH0",
+  "description": "Just a modpack containing Krastorio 2, Space Exploration, 5dim, 248k and related mods to make turning them on easier.",
+  "dependencies": [
+    "nach0_modpack_se_k2_5dim",
+    "nach0_modpack_248k_se",
+    "nach0_modpack_248k_k2"
+  ]
+}
