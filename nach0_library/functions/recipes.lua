@@ -1,8 +1,41 @@
 nach0.recipes = {}
 
+function nach0.recipes.getRecipe(recipe_name)
+    return data.raw.recipe[recipe_name]
+end
+
+function nach0.recipes.doesRecipeExist(recipe_name)
+    if data.raw.recipe[recipe_name] then
+        return true
+    else
+        nach0.error("Recipe: " .. recipe_name .. " does not exist!")
+        return false
+    end
+end
+
 function nach0.recipes.removeRecipe(recipe_name)
     nach0.log("Removing recipe: " .. recipe_name)
     data.raw.recipe[recipe_name] = nil
+    for _, mod in pairs(data.raw.module) do
+        if mod.limitation then
+            for i = #mod.limitation, 1, -1 do
+                local recipe = mod.limitation[i]
+                if recipe == recipe_name then
+                    table.remove(mod.limitation, i)
+                end
+            end
+        end
+    end
+    for _, tech in pairs(data.raw.technology) do
+        if tech.effects then
+            for i = #tech.effects, 1, -1 do
+                local effect = tech.effects[i]
+                if effect.type and effect.type == "unlock-recipe" and effect.recipe and effect.recipe == recipe_name then
+                    table.remove(tech.effects, i)
+                end
+            end
+        end
+    end
 end
 
 function nach0.recipes.replaceIngredientsToAllRecipes(old_item, new_item)
@@ -69,58 +102,196 @@ function nach0.recipes.lockBehindTechAndHideFromPlayer(technology_name, recipe_n
     nach0.recipes.hideFromPlayer(recipe_name)
 end
 
-function nach0.recipes.makeRecipeSubcategory(name)
-end
-
-function nach0.recipes.setRecipeCategory(recipe_name, recipe_group, recipe_subgroup, recipe_order)
-    if recipe_group then
-        nach0.log("Setting recipe: " .. recipe_name .. " group to: " .. recipe_group)
-        data.raw.recipe[recipe_name].group = recipe_group
-    end
-    if recipe_subgroup then
-        nach0.log("Setting recipe: " .. recipe_name .. " subgroup to: " .. recipe_subgroup)
-        data.raw.recipe[recipe_name].subgroup = recipe_subgroup
-    end
-    if recipe_order then
-        nach0.log("Setting recipe: " .. recipe_name .. " order to: " .. recipe_order)
-        data.raw.recipe[recipe_name].order = recipe_order
-    end
-end
-
-function nach0.recipes.generateOrder(name, index)
-    local i = 1
-    while index > 26 do
-        index = index - 26
-        i = i + 1
-    end
-    local order = nach0.alphabet[i] .. nach0.alphabet[index] .. "-" .. nach0.alphabet[1] .. "[" .. name .. "]"
-    return order
-end
-
-function nach0.recipes.organiseRecipes(recipes, group, subgroup, subgroup_order)
-    if not group then
-        return
-    end
-    if not data.raw["item-group"][group] then
-        nach0.error("Item group: " .. group .. " does not exist!")
-        return
-    end
-    if subgroup and not data.raw["item-subgroup"][subgroup] then
-        nach0.log("Item subgroup: " .. subgroup .. " does not exist! Making")
-        if subgroup_order then
-            data:extend({{
-                type = "item-subgroup",
-                name = subgroup,
-                group = group,
-                order = subgroup_order
-            }})
+function nach0.recipes.getIngredients(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) then
+        local ingredients = data.raw.recipe[recipe_name].ingredients
+        if ingredients then
+            return ingredients
         end
     end
-    local i = 1
-    for _, recipe in pairs(recipes) do
-        for _, recipe_name in pairs(recipe.recipes) do
-            nach0.recipes.setRecipeCategory(recipe_name, group, subgroup, nach0.recipes.generateOrder(recipe.name, i))
-            i = i + 1
+    return {}
+end
+
+function nach0.recipes.getNormalIngredients(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) and data.raw.recipe[recipe_name].normal then
+        local ingredients = data.raw.recipe[recipe_name].normal.ingredients
+        if ingredients then
+            return ingredients
+        end
+    end
+    return {}
+end
+
+function nach0.recipes.getExpensiveIngredients(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) and data.raw.recipe[recipe_name].expensive then
+        local ingredients = data.raw.recipe[recipe_name].expensive.ingredients
+        if ingredients then
+            return ingredients
+        end
+    end
+    return {}
+end
+
+function nach0.recipes.getProduct(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) then
+        local product = data.raw.recipe[recipe_name].result
+        if product then
+            return product
+        end
+    end
+    return ""
+end
+
+function nach0.recipes.getProducts(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) then
+        local products = data.raw.recipe[recipe_name].results
+        if products then
+            return products
+        end
+    end
+    return {}
+end
+
+function nach0.recipes.getNormalProduct(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) and data.raw.recipe[recipe_name].normal then
+        local product = data.raw.recipe[recipe_name].normal.result
+        if product then
+            return product
+        end
+    end
+    return ""
+end
+
+function nach0.recipes.getNormalProducts(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) and data.raw.recipe[recipe_name].normal then
+        local products = data.raw.recipe[recipe_name].normal.results
+        if products then
+            return products
+        end
+    end
+    return {}
+end
+
+function nach0.recipes.getExpensiveProduct(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) and data.raw.recipe[recipe_name].expensive then
+        local product = data.raw.recipe[recipe_name].expensive.result
+        if product then
+            return product
+        end
+    end
+    return ""
+end
+
+function nach0.recipes.getExpensiveProducts(recipe_name)
+    if nach0.recipes.doesRecipeExist(recipe_name) and data.raw.recipe[recipe_name].expensive then
+        local products = data.raw.recipe[recipe_name].expensive.results
+        if products then
+            return products
+        end
+    end
+    return {}
+end
+
+function nach0.recipes.doesItemTableContainItem(item, table)
+    for _, items in pairs(table) do
+        if items.name and items.name == item then
+            return true
+        else
+            for _, v in ipairs(items) do
+                if v == item then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+
+function nach0.recipes.doesRecipeContainProduct(recipe_name, product)
+    if nach0.recipes.getProduct(recipe_name) == product or nach0.recipes.doesItemTableContainItem(product, nach0.recipes.getProducts(recipe_name)) then
+        return true
+    elseif nach0.recipes.getNormalProduct(recipe_name) == product or nach0.recipes.doesItemTableContainItem(product, nach0.recipes.getNormalProducts(recipe_name)) then
+        return true
+    elseif nach0.recipes.getExpensiveProduct(recipe_name) == product or nach0.recipes.doesItemTableContainItem(product, nach0.recipes.getExpensiveProducts(recipe_name)) then
+        return true
+    end
+    return false
+end
+
+function nach0.recipes.doesRecipeContainIngredient(recipe_name, ingredient)
+    if nach0.recipes.doesItemTableContainItem(ingredient, nach0.recipes.getIngredients(recipe_name)) then
+        return true
+    elseif nach0.recipes.doesItemTableContainItem(ingredient, nach0.recipes.getNormalIngredients(recipe_name)) then
+        return true
+    elseif nach0.recipes.doesItemTableContainItem(ingredient, nach0.recipes.getExpensiveIngredients(recipe_name)) then
+        return true
+    end
+    return false
+end
+
+function nach0.recipes.convertItemInTable(table, old_item, new_item)
+    for _, item in ipairs(table) do
+        if item.name and item.name == old_item then
+            item.name = new_item
+        else
+            for i, v in ipairs(item) do
+                if v == old_item then
+                    item[i] = new_item
+                end
+            end
+        end
+    end
+end
+
+
+function nach0.recipes.convertProduct(recipe_name, old_product, new_product)
+    local recipe = data.raw.recipe[recipe_name]
+    if not recipe then
+        nach0.error("Recipe: " .. recipe_name .. " does not exist!")
+        return
+    end
+    nach0.log("Converting product from: " .. old_product .. " to: " .. new_product .. " in recipe: " .. recipe_name)
+    nach0.recipes.convertItemInTable(nach0.recipes.getProducts(recipe_name), old_product, new_product)
+    if recipe.result and recipe.result == old_product then
+        recipe.result = new_product
+    end
+    nach0.recipes.convertItemInTable(nach0.recipes.getNormalProducts(recipe_name), old_product, new_product)
+    if recipe.normal and recipe.normal.result and recipe.normal.result == old_product then
+        recipe.normal.result = new_product
+    end
+    nach0.recipes.convertItemInTable(nach0.recipes.getExpensiveProducts(recipe_name), old_product, new_product)
+    if recipe.expensive and recipe.expensive.result and recipe.expensive.result == old_product then
+        recipe.expensive.result = new_product
+    end
+    if recipe.main_product and recipe.main_product == old_product then
+        recipe.main_product = new_product
+    end
+end
+
+function nach0.recipes.convertProductFromAllRecipes(old_product, new_product)
+    for _, recipe in pairs(data.raw.recipe) do
+        if nach0.recipes.doesRecipeContainProduct(recipe.name, old_product) then
+            nach0.recipes.convertProduct(recipe.name, old_product, new_product)
+        end
+    end
+end
+
+function nach0.recipes.convertIngredient(recipe_name, old_ingredient, new_ingredient)
+    local recipe = data.raw.recipe[recipe_name]
+    if not recipe then
+        nach0.error("Recipe: " .. recipe_name .. " does not exist!")
+        return
+    end
+    nach0.log("Converting ingredient from: " .. old_ingredient .. " to: " .. new_ingredient .. " in recipe: " .. recipe_name)
+    nach0.recipes.convertItemInTable(nach0.recipes.getIngredients(recipe_name), old_ingredient, new_ingredient)
+    nach0.recipes.convertItemInTable(nach0.recipes.getNormalIngredients(recipe_name), old_ingredient, new_ingredient)
+    nach0.recipes.convertItemInTable(nach0.recipes.getExpensiveIngredients(recipe_name), old_ingredient, new_ingredient)
+end
+
+function nach0.recipes.convertIngredientFromAllRecipes(old_ingredient, new_ingredient)
+    for _, recipe in pairs(data.raw.recipe) do
+        if nach0.recipes.doesRecipeContainIngredient(recipe.name, old_ingredient) then
+            nach0.recipes.convertIngredient(recipe.name, old_ingredient, new_ingredient)
         end
     end
 end
